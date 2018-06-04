@@ -1,1 +1,1 @@
-# sudoku-web
+# Sudoku web app [![CircleCI](https://circleci.com/gh/MrSzymonello/sudoku-web.svg?style=shield)](https://circleci.com/gh/MrSzymonello/sudoku-web)
