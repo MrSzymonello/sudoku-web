@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatButtonToggle  } from '@angular/material/button-toggle';
 import { SudokuBoardService } from './sudokuBoard.service';
 import { Response } from '@angular/http';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,9 @@ export class AppComponent implements OnInit {
   selectedIndex = -1;
   selectedValue = -1;
 
-  constructor(private sudokuBoardService: SudokuBoardService) {}
+  constructor(
+    private sudokuBoardService: SudokuBoardService,
+    private toastyService: ToastyService) { }
 
   ngOnInit() {
     this.getBoard();
@@ -53,7 +56,10 @@ export class AppComponent implements OnInit {
         }
 
         this.loading = false;
-      }, () => this.loading = false);
+      }, (err: any) => {
+        this.loading = false;
+        throw err;
+      });
   }
 
   selectedIndexChange(change) {

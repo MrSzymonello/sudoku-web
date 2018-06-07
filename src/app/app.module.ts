@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
+import { ToastyModule } from 'ng2-toasty';
 
 import { AppComponent } from './app.component';
+import { AppErrorHandler } from './app.error-handler';
 import { SudokuBoardService } from './sudokuBoard.service';
 import { LoaderComponent } from './shared/loader/loader.component';
 
@@ -18,9 +20,13 @@ import { LoaderComponent } from './shared/loader/loader.component';
     BrowserModule,
     HttpModule,
     MatButtonToggleModule,
-    MatButtonModule
+    MatButtonModule,
+    ToastyModule.forRoot()
   ],
-  providers: [SudokuBoardService],
+  providers: [
+    { provide: ErrorHandler, useClass: AppErrorHandler },
+    SudokuBoardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
