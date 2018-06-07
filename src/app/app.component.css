@@ -1,0 +1,15 @@
+.content {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    z-index: 0;
+}
+
+div.content mat-button-toggle-group {
+    margin-top: 30px;
+    margin-bottom: 30px;    
+}
+
+.sudoku {
+    height: 420px;
+}

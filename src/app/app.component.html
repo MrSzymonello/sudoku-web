@@ -1,16 +1,19 @@
-<mat-button-toggle-group (change)='selectedIndexChange($event)'>
-  <table>
-    <tr *ngFor="let row of rows">
-      <td *ngFor="let col of row.columns">        
-        <mat-button-toggle #toggleButton="matButtonToggle" [value]="col.index">{{col.value}}</mat-button-toggle>
-      </td>
-    </tr>
-  </table>
-</mat-button-toggle-group>
-<div>
-  <button (click)='getBoard()' mat-raised-button color="primary" [disabled]="loading">New</button>
-  <button (click)='clear()' mat-raised-button color="primary" [disabled]="selectedIndex === -1">Clear</button>
-</div>
-<div class="center">
-  <app-loader [loading]="loading"></app-loader>
+<app-loader [loading]="loading"></app-loader>
+<div class="content">
+  <div class="sudoku">
+    <mat-button-toggle-group (change)='selectedIndexChange($event)'>
+      <table>
+        <tr *ngFor="let row of rows">
+          <td *ngFor="let col of row.columns">
+            <mat-button-toggle #toggleButton="matButtonToggle" [value]="col.index">{{col.value}}</mat-button-toggle>
+          </td>
+        </tr>
+      </table>
+    </mat-button-toggle-group>
+  </div>
+  <div>
+    <button (click)='getBoard()' mat-raised-button color="primary" [disabled]="loading" margin-right="100">Reload</button>
+    &nbsp;&nbsp;&nbsp;
+    <button (click)='clear()' mat-raised-button color="primary" [disabled]="selectedIndex === -1">Clear</button>
+  </div>
 </div>
