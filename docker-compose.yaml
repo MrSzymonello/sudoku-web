@@ -1,0 +1,18 @@
+version: "2"
+services:
+    api:
+        image: mrszymonello/sudoku-api:latest
+        networks:
+            - net
+        ports:
+            - "8080:8080"
+    web:
+        image: mrszymonello/sudoku-web:latest
+        networks:
+            - net
+        ports:
+            - "4200:4200"
+networks:
+    net:
+        driver: bridge
+
